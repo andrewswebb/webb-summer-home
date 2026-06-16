@@ -506,11 +506,11 @@
   <div class="nav-inner">
     <a href="#getting-in">🔑 Getting In</a>
     <a href="#alarm">🔔 Alarm</a>
+    <a href="#checkin">✅ Check-In</a>
     <a href="#pool">🏊 Pool</a>
     <a href="#shower">🚿 Shower</a>
     <a href="#grill">🔥 Grill</a>
     <a href="#stove">🍳 Stove</a>
-    <a href="#checkin">✅ Check-In</a>
     <a href="#checkout">🧹 Check-Out</a>
     <a href="#local">🗺️ Local Guide</a>
   </div>
@@ -558,7 +558,7 @@
       <div class="card-title">Entry Process</div>
       <ul class="steps">
         <li class="step"><div class="step-num">1</div><div class="step-text"><strong>Text Andy or Michelle</strong> to let them know you're arriving — they'll disarm the alarm remotely.</div></li>
-        <li class="step"><div class="step-num">2</div><div class="step-text">Enter through the <strong>garage</strong> or the <strong>front door</strong> using the door code Andy or Michelle texted you.</div></li>
+        <li class="step"><div class="step-num">2</div><div class="step-text">Enter through the <strong>garage</strong> or the <strong>front door</strong> using the <strong>4-digit door code</strong> Andy or Michelle texted you.</div></li>
         <li class="step"><div class="step-num">3</div><div class="step-text">If the alarm wasn't disarmed remotely, head straight to the panel — see the Alarm section for step-by-step instructions.</div></li>
         <li class="step"><div class="step-num">4</div><div class="step-text">Make yourself at home! 🌊</div></li>
       </ul>
@@ -587,7 +587,8 @@
       <ul class="steps">
         <li class="step"><div class="step-num">1</div><div class="step-text">Walk directly to the alarm panel — it will be beeping with an entry countdown.</div></li>
         <li class="step"><div class="step-num">2</div><div class="step-text">The touchscreen will display the system status. <strong>Tap "Disarm"</strong> on the screen.</div></li>
-        <li class="step"><div class="step-num">3</div><div class="step-text">Enter the <strong>4-digit alarm code</strong> Andy or Michelle texted you using the keypad on the screen.</div></li>
+        <li class="step"><div class="step-num">3</div><div class="step-text">Enter the 
+          Andy or Michelle texted you using the keypad on the screen.</div></li>
         <li class="step"><div class="step-num">4</div><div class="step-text">The panel will announce the system is disarmed, the beeping will stop, and the screen will show a green status.</div></li>
       </ul>
     </div>
@@ -609,6 +610,23 @@
     <div class="callout callout-coral">
       <span class="callout-icon">⚠️</span>
       <div class="callout-body"><strong>If the alarm goes off:</strong> Enter your 4-digit alarm code immediately and tap Disarm. ADT will call Andy or Michelle's cell directly. Text them too so they know what's happening.</div>
+    </div>
+  </div>
+
+  <!-- CHECK IN -->
+  <div class="section" id="checkin">
+    <div class="section-header">
+      <div class="section-icon">✅</div>
+      <h2 class="section-title">Check-In List</h2>
+    </div>
+    <p class="section-intro">Run through these when you first arrive. Tap each item to check it off!</p>
+
+    <div class="card">
+      <ul class="checklist" id="checkin-list">
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Enter door code and disable alarm (or text Andy/Michelle to disarm remotely)</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Empty the dehumidifiers</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Adjust heat/AC to your comfort — we leave the AC at 78°F and heat at 55°F when we're away</span></li>
+      </ul>
     </div>
   </div>
 
@@ -770,21 +788,6 @@
       <ul class="bullets">
         <li>Turn on the <strong>range hood fan</strong> before lighting any burner</li>
         <li>Light burners using the knob — turn to ignite, then adjust to your flame</li>
-      </ul>
-    </div>
-  </div>
-  <div class="section" id="checkin">
-    <div class="section-header">
-      <div class="section-icon">✅</div>
-      <h2 class="section-title">Check-In List</h2>
-    </div>
-    <p class="section-intro">Run through these when you first arrive. Tap each item to check it off!</p>
-
-    <div class="card">
-      <ul class="checklist" id="checkin-list">
-        <li onclick="toggle(this)"><div class="checkbox"></div><span>Enter door code and disable alarm (or text Andy/Michelle to disarm remotely)</span></li>
-        <li onclick="toggle(this)"><div class="checkbox"></div><span>Empty the dehumidifiers</span></li>
-        <li onclick="toggle(this)"><div class="checkbox"></div><span>Adjust heat/AC to your comfort — we leave the AC at 78°F and heat at 55°F when we're away</span></li>
       </ul>
     </div>
   </div>
