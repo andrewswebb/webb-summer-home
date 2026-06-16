@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Webb Family Summer Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #2C7DA0;
+    --deep: #1B4F6B;
+    --sky: #A8D8EA;
+    --sand: #F5EDD6;
+    --dune: #E8D5A3;
+    --shell: #FDFAF4;
+    --seafoam: #C8E6C9;
+    --coral: #E07A5F;
+    --text: #2D2D2D;
+    --muted: #7A7A7A;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--shell);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--deep) 0%, var(--ocean) 60%, #4AAECC 100%);
+    color: var(--white);
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 60px;
+    background: var(--shell);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .wave-decoration {
+    font-size: 2rem;
+    letter-spacing: 8px;
+    opacity: 0.5;
+    margin-bottom: 20px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 8vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--sky);
+    margin-bottom: 28px;
+  }
+
+  .hero-address {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 40px;
+    padding: 8px 24px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.05em;
+    margin-bottom: 36px;
+  }
+
+  .contact-pills {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-pill {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 40px;
+    padding: 10px 22px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .contact-pill:hover { background: rgba(255,255,255,0.25); }
+  .contact-pill .emoji { margin-right: 6px; }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--deep);
+    padding: 0 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+
+  .nav-inner {
+    display: flex;
+    gap: 4px;
+    min-width: max-content;
+    padding: 8px 0;
+  }
+
+  .nav a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 7px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 52px 0 40px;
+    border-bottom: 1px solid var(--dune);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .section-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    background: var(--ocean);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: var(--deep);
+    font-weight: 700;
+  }
+
+  .section-intro {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid var(--dune);
+    box-shadow: 0 2px 8px rgba(44,125,160,0.06);
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ocean);
+    margin-bottom: 14px;
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .callout-ocean { background: #E8F4FA; border-left: 4px solid var(--ocean); }
+  .callout-sand  { background: var(--sand); border-left: 4px solid var(--dune); }
+  .callout-coral { background: #FDEEE9; border-left: 4px solid var(--coral); }
+  .callout-green { background: #F0F8F1; border-left: 4px solid #4CAF50; }
+
+  .callout-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .callout-body { font-size: 0.9rem; line-height: 1.6; }
+  .callout-body strong { color: var(--deep); }
+
+  /* ── STEPS ── */
+  .steps { list-style: none; padding: 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--ocean);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-text { font-size: 0.95rem; line-height: 1.6; padding-top: 4px; }
+  .step-text strong { color: var(--deep); }
+
+  /* ── BULLETS ── */
+  .bullets { list-style: none; padding: 0; }
+  .bullets li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--sand);
+  }
+  .bullets li:last-child { border-bottom: none; }
+  .bullets li::before {
+    content: '›';
+    position: absolute;
+    left: 4px;
+    color: var(--ocean);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--sand);
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox {
+    width: 22px; height: 22px;
+    border: 2px solid var(--ocean);
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    background: white;
+  }
+  .checklist li.done .checkbox {
+    background: var(--ocean);
+    border-color: var(--ocean);
+  }
+  .checklist li.done .checkbox::after { content: '✓'; color: white; font-size: 0.75rem; font-weight: 700; }
+  .checklist li.done span { text-decoration: line-through; color: var(--muted); }
+
+  /* ── TWO COL GRID ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
+
+  .info-tile {
+    background: var(--white);
+    border: 1px solid var(--dune);
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+  }
+  .info-tile .tile-emoji { font-size: 1.8rem; margin-bottom: 8px; }
+  .info-tile .tile-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+  .info-tile .tile-val { font-size: 0.95rem; font-weight: 600; color: var(--deep); }
+
+  /* ── LOCAL RECS ── */
+  .rec-card {
+    background: var(--white);
+    border: 1px solid var(--dune);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .rec-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .rec-name { font-weight: 600; color: var(--deep); font-size: 0.95rem; margin-bottom: 2px; }
+  .rec-detail { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+  .rec-tag {
+    display: inline-block;
+    background: var(--sky);
+    color: var(--deep);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── GUESTBOOK ── */
+  .guestbook-entry {
+    background: var(--white);
+    border: 1px solid var(--dune);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+  .guestbook-entry .gb-top {
+    display: flex; gap: 12px; margin-bottom: 14px;
+  }
+  .gb-field {
+    flex: 1;
+  }
+  .gb-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ocean);
+    margin-bottom: 4px;
+  }
+  .gb-input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--dune);
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    padding: 4px 0;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .gb-input:focus { border-color: var(--ocean); }
+  .gb-textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--dune);
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    padding: 4px 0;
+    outline: none;
+    resize: none;
+    min-height: 80px;
+    transition: border-color 0.2s;
+  }
+  .gb-textarea:focus { border-color: var(--ocean); }
+  .gb-save-btn {
+    margin-top: 14px;
+    background: var(--ocean);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+  }
+  .gb-save-btn:hover { background: var(--deep); }
+
+  .saved-entries { margin-top: 24px; }
+  .saved-entry {
+    background: var(--sand);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .saved-header { display: flex; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+  .saved-name { font-weight: 700; color: var(--deep); font-size: 0.95rem; }
+  .saved-date { font-size: 0.8rem; color: var(--muted); }
+  .saved-message { font-size: 0.9rem; color: var(--text); font-style: italic; line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--deep);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 36px 24px;
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+  .footer strong { color: white; }
+
+  /* ── SUBHEADINGS ── */
+  .subhead {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--deep);
+    font-weight: 700;
+    margin: 24px 0 12px;
+  }
+
+  /* ── DIRECTIONS BLOCK ── */
+  .directions-block {
+    background: var(--sand);
+    border-radius: 14px;
+    padding: 18px 20px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .directions-block a {
+    color: var(--ocean);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .directions-block a:hover { text-decoration: underline; }
+
+  /* ── SECTION DIVIDER ── */
+  .wave-divider {
+    text-align: center;
+    color: var(--sky);
+    font-size: 1.4rem;
+    letter-spacing: 6px;
+    margin: 6px 0 32px;
+    opacity: 0.6;
+  }
+
+  /* ── TRASH NOTE ── */
+  .trash-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFF8E8;
+    border: 1px solid var(--dune);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wave-decoration">〰〰〰</div>
+  <p class="hero-eyebrow">Welcome to</p>
+  <h1>The Webb Family<br>Summer Home</h1>
+  <p class="hero-sub">Marstons Mills, Cape Cod</p>
+  <div class="hero-address">📍 23 Middle Pond Path, Marstons Mills, MA 02648</div>
+  <div class="contact-pills">
+    <a href="sms:+1XXXXXXXXXX" class="contact-pill"><span class="emoji">📱</span> Text Andy</a>
+    <a href="sms:+1XXXXXXXXXX" class="contact-pill"><span class="emoji">📱</span> Text Michelle</a>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#getting-in">🔑 Getting In</a>
+    <a href="#alarm">🔔 Alarm</a>
+    <a href="#pool">🏊 Pool</a>
+    <a href="#shower">🚿 Shower</a>
+    <a href="#checkin">✅ Check-In</a>
+    <a href="#checkout">🧹 Check-Out</a>
+    <a href="#local">🗺️ Local Guide</a>
+    <a href="#guestbook">📖 Guestbook</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- WELCOME NOTE -->
+  <div class="section" style="border-bottom: 1px solid var(--dune);">
+    <div class="callout callout-ocean" style="margin-top: 8px;">
+      <span class="callout-icon">👋</span>
+      <div class="callout-body">
+        <strong>Welcome to our little slice of Cape Cod!</strong><br>
+        We're so glad you're here. This guide has everything you need to settle in, enjoy the pool, find the beach, and feel right at home. Read through before your stay — and don't hesitate to text Andy or Michelle with any questions!
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 20px;">
+      <div class="info-tile">
+        <div class="tile-emoji">📶</div>
+        <div class="tile-label">WiFi Network</div>
+        <div class="tile-val">_______________</div>
+      </div>
+      <div class="info-tile">
+        <div class="tile-emoji">🔐</div>
+        <div class="tile-label">WiFi Password</div>
+        <div class="tile-val">_______________</div>
+      </div>
+      <div class="info-tile">
+        <div class="tile-emoji">🗑️</div>
+        <div class="tile-label">Trash</div>
+        <div class="tile-val">Bring home with you</div>
+      </div>
+      <div class="info-tile">
+        <div class="tile-emoji">🚨</div>
+        <div class="tile-label">Questions?</div>
+        <div class="tile-val">Text Andy or Michelle</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GETTING IN -->
+  <div class="section" id="getting-in">
+    <div class="section-header">
+      <div class="section-icon">🔑</div>
+      <h2 class="section-title">Getting In</h2>
+    </div>
+    <p class="section-intro">Andy or Michelle will send you the door code and alarm code by text before your stay.</p>
+
+    <div class="card">
+      <div class="card-title">On Arrival</div>
+      <ul class="steps">
+        <li class="step"><div class="step-num">1</div><div class="step-text">Use the code Andy or Michelle texted you to unlock the door.</div></li>
+        <li class="step"><div class="step-num">2</div><div class="step-text"><strong>Move quickly to the alarm panel</strong> — you have about 30 seconds before it sounds. See the Alarm section below.</div></li>
+        <li class="step"><div class="step-num">3</div><div class="step-text">Make yourself at home! 🌊</div></li>
+      </ul>
+    </div>
+
+    <div class="callout callout-sand">
+      <span class="callout-icon">🔒</span>
+      <div class="callout-body"><strong>Please keep door codes private.</strong> Always lock the deadbolt when you leave, even for a quick trip to the beach.</div>
+    </div>
+  </div>
+
+  <!-- ALARM -->
+  <div class="section" id="alarm">
+    <div class="section-header">
+      <div class="section-icon">🔔</div>
+      <h2 class="section-title">Alarm System</h2>
+    </div>
+    <p class="section-intro">The alarm code will be texted to you by Andy or Michelle before your stay.</p>
+
+    <div class="card">
+      <div class="card-title">Disabling the Alarm (Arrival)</div>
+      <ul class="steps">
+        <li class="step"><div class="step-num">1</div><div class="step-text">Walk directly to the alarm panel — it will be beeping.</div></li>
+        <li class="step"><div class="step-num">2</div><div class="step-text">Enter the code Andy or Michelle sent you.</div></li>
+        <li class="step"><div class="step-num">3</div><div class="step-text">Press <strong>[OFF]</strong> or <strong>[DISARM]</strong>. The beeping will stop and a green light will appear.</div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Setting the Alarm (Departure)</div>
+      <ul class="steps">
+        <li class="step"><div class="step-num">1</div><div class="step-text">Close and lock all windows and doors.</div></li>
+        <li class="step"><div class="step-num">2</div><div class="step-text">Enter your code and press <strong>[AWAY]</strong> or <strong>[ARM]</strong>.</div></li>
+        <li class="step"><div class="step-num">3</div><div class="step-text">Exit through the front door within 60 seconds.</div></li>
+      </ul>
+    </div>
+
+    <div class="callout callout-coral">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-body"><strong>False alarm?</strong> Re-enter your code immediately. If the siren keeps going, text Andy or Michelle right away.</div>
+    </div>
+  </div>
+
+  <!-- POOL -->
+  <div class="section" id="pool">
+    <div class="section-header">
+      <div class="section-icon">🏊</div>
+      <h2 class="section-title">The Pool</h2>
+    </div>
+    <p class="section-intro">Perfect for a hot Cape Cod afternoon — here's everything you need to know.</p>
+
+    <div class="callout callout-coral">
+      <span class="callout-icon">🛡️</span>
+      <div class="callout-body"><strong>Safety first:</strong> No swimming alone. Children must be supervised by an adult at all times. No glass near the pool area. Please shower before entering the pool.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Pool Rules</div>
+      <ul class="bullets">
+        <li>Always swim with at least one other person</li>
+        <li>Children need adult supervision at all times</li>
+        <li>No glass bottles or dishes near the pool</li>
+        <li>Please shower before getting in</li>
+        <li>Pool hours: _______ am to _______ pm</li>
+        <li>Life rings and noodles are stored near: _______________</li>
+      </ul>
+    </div>
+
+    <p class="subhead">Turning the Pool On</p>
+    <ul class="steps">
+      <li class="step"><div class="step-num">1</div><div class="step-text">Find the pool equipment box near _______________.</div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text">Flip the <strong>[PUMP]</strong> switch to ON.</div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text">If using the heater, flip <strong>[HEATER]</strong> to ON and set temperature to ___°F.</div></li>
+      <li class="step"><div class="step-num">4</div><div class="step-text">Pool light switch is located: _______________.</div></li>
+    </ul>
+
+    <p class="subhead">Turning the Pool Off</p>
+    <ul class="steps">
+      <li class="step"><div class="step-num">1</div><div class="step-text">Turn the heater OFF first. Wait 5 minutes before turning off the pump.</div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-text">Flip the <strong>[PUMP]</strong> switch to OFF.</div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-text">Replace the pool cover when done.</div></li>
+    </ul>
+
+    <div class="callout callout-ocean">
+      <span class="callout-icon">🧪</span>
+      <div class="callout-body">The pool is professionally maintained. <strong>Please don't adjust any chemical settings.</strong> Notice cloudy water or strange noises? Text Andy or Michelle.</div>
+    </div>
+  </div>
+
+  <!-- SHOWER -->
+  <div class="section" id="shower">
+    <div class="section-header">
+      <div class="section-icon">🚿</div>
+      <h2 class="section-title">Bedroom Shower</h2>
+    </div>
+    <p class="section-intro">A few quirks worth knowing so you don't start your beach day with a cold surprise!</p>
+
+    <div class="card">
+      <div class="card-title">How to Use the Shower</div>
+      <ul class="steps">
+        <li class="step"><div class="step-num">1</div><div class="step-text">Turn the handle <strong>LEFT</strong> for hot water, <strong>RIGHT</strong> for cold.</div></li>
+        <li class="step"><div class="step-num">2</div><div class="step-text">Pull the diverter knob to switch from bath to shower.</div></li>
+        <li class="step"><div class="step-num">3</div><div class="step-text">Wait about <strong>___ minutes</strong> for the water to warm up — the hot water heater takes a moment.</div></li>
+        <li class="step"><div class="step-num">4</div><div class="step-text">Adjust to your preferred temp before stepping in. <strong>Don't turn past the red marker</strong> — it gets very hot!</div></li>
+      </ul>
+    </div>
+
+    <div class="callout callout-sand">
+      <span class="callout-icon">🛁</span>
+      <div class="callout-body">Towels are in _______________. Extra toiletries are under the bathroom sink. If the drain runs slow or anything seems off, just text us — please don't use chemical drain openers.</div>
+    </div>
+  </div>
+
+  <!-- CHECK IN -->
+  <div class="section" id="checkin">
+    <div class="section-header">
+      <div class="section-icon">✅</div>
+      <h2 class="section-title">Check-In List</h2>
+    </div>
+    <p class="section-intro">Run through these when you first arrive. Tap each item to check it off!</p>
+
+    <div class="card">
+      <ul class="checklist" id="checkin-list">
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Enter door code and disable alarm</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Connect to WiFi (password on the fridge)</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Check that heat/AC is comfortable</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Locate fire extinguisher and exits</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Check the pool area and cover</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Check kitchen and fridge</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Test lights, fans, and A/C</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Note any pre-existing damage and text us within 24 hours</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Remind yourself: trash goes home with you 🗑️</span></li>
+      </ul>
+    </div>
+
+    <div class="callout callout-green">
+      <span class="callout-icon">📸</span>
+      <div class="callout-body">Notice anything damaged or out of place on arrival? <strong>Text Andy or Michelle within 24 hours</strong> so we can sort it out together.</div>
+    </div>
+  </div>
+
+  <!-- CHECK OUT -->
+  <div class="section" id="checkout">
+    <div class="section-header">
+      <div class="section-icon">🧹</div>
+      <h2 class="section-title">Check-Out List</h2>
+    </div>
+    <p class="section-intro">Thanks so much for staying! Before you head home, please run through these. Tap to check off!</p>
+
+    <div class="card">
+      <div class="card-title">Kitchen</div>
+      <ul class="checklist">
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Wash, dry, and put away all dishes</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Wipe down counters and stovetop</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Empty the dishwasher</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Clear fridge of any food you brought</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Bedrooms & Bathrooms</div>
+      <ul class="checklist">
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Strip bed linens and leave on bedroom floor</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Leave used towels in the bathroom or hamper</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Check all drawers and closets for personal items</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Pool & Outdoors</div>
+      <ul class="checklist">
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Turn off pool pump and heater</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Replace the pool cover</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Latch the pool gate</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Rinse and put away pool toys and floats</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Pick up any trash from the yard</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Locking Up</div>
+      <ul class="checklist">
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Close and lock all windows</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Close and lock all doors</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Set the alarm</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Take all trash home with you 🗑️</span></li>
+        <li onclick="toggle(this)"><div class="checkbox"></div><span>Double-check: nothing left behind!</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LOCAL GUIDE -->
+  <div class="section" id="local">
+    <div class="section-header">
+      <div class="section-icon">🗺️</div>
+      <h2 class="section-title">Local Cape Cod Guide</h2>
+    </div>
+    <p class="section-intro">Our favorite spots near the house — enjoy Cape Cod like a local!</p>
+
+    <p class="subhead">🏊 Middle Pond — Right Out Front</p>
+
+    <div class="directions-block">
+      <strong>Middle Pond</strong> is one of the three interconnected Indian Ponds — over 100 acres of clear, clean freshwater perfect for swimming, kayaking, and fishing. You're right on it!<br><br>
+      The pond's access point for canoes and kayaks is at the end of Flume Avenue off Mystic Drive (from Route 149). Note: there's a <strong>10 HP motor limit</strong> on the water.<br><br>
+      Fish species include largemouth bass, yellow perch, chain pickerel, and pumpkinseed. Bring a rod!<br><br>
+      <a href="https://maps.apple.com/?address=Flume+Avenue,+Marstons+Mills,+MA" target="_blank">📍 Open in Maps: Middle Pond Access, Flume Ave</a>
+    </div>
+
+    <p class="subhead">🌊 Craigville Beach — Our Favorite</p>
+
+    <div class="rec-card">
+      <div class="rec-icon">🏖️</div>
+      <div>
+        <div class="rec-name">Craigville Beach</div>
+        <div class="rec-detail">
+          997 Craigville Beach Rd, Centerville, MA 02632<br>
+          About 10 minutes from the house. A beautiful, wide sandy beach on Nantucket Sound — warm, calm water, great for kids and families. Lifeguards on duty in summer. Full facilities including restrooms, outdoor showers, and beach chair rentals. Restaurants right across the street.<br><br>
+          <strong>Parking:</strong> ~$25/day. Arrive before 9am on weekends to get a spot — it fills up fast!<br>
+          <strong>Tip:</strong> Walk east along the shore for views of Squaw Island where the Kennedy family once vacationed.
+        </div>
+        <div>
+          <span class="rec-tag">~10 min drive</span>
+          <span class="rec-tag">Family-friendly</span>
+          <span class="rec-tag">Lifeguards</span>
+        </div>
+        <div style="margin-top: 10px;">
+          <a href="https://maps.apple.com/?address=997+Craigville+Beach+Rd,+Centerville,+MA+02632" target="_blank" style="color: var(--ocean); font-size: 0.85rem; font-weight: 600; text-decoration: none;">📍 Get Directions →</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="subhead">🍽️ Restaurants We Love</p>
+
+    <div class="rec-card">
+      <div class="rec-icon">🦞</div>
+      <div>
+        <div class="rec-name">Lazy Lobstah</div>
+        <div class="rec-detail">On Rt. 130 in Marstons Mills — locals swear this is the best lobster roll on Cape Cod. Casual, no-frills, and completely worth it.</div>
+        <span class="rec-tag">Seafood</span>
+        <span class="rec-tag">Very local</span>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-icon">🍕</div>
+      <div>
+        <div class="rec-name">Crisp</div>
+        <div class="rec-detail">Excellent flatbreads and quick, friendly service. The scallop & bacon and short rib flatbreads are the must-orders. Great for takeout nights.</div>
+        <span class="rec-tag">Flatbreads</span>
+        <span class="rec-tag">Takeout</span>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-icon">☕</div>
+      <div>
+        <div class="rec-name">Morning Coffee & Bakeries</div>
+        <div class="rec-detail">The Marstons Mills and Centerville area has wonderful bakeries and coffee shops for a lazy Cape Cod morning. Ask Andy or Michelle for their current favorites!</div>
+        <span class="rec-tag">Breakfast</span>
+        <span class="rec-tag">Coffee</span>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-icon">🍸</div>
+      <div>
+        <div class="rec-name">Five Bays Bistro</div>
+        <div class="rec-detail">A gem in nearby Osterville — modern food in a charming Cape Cod setting. Great for a special dinner out. Reservations recommended.</div>
+        <span class="rec-tag">Dinner</span>
+        <span class="rec-tag">Osterville</span>
+      </div>
+    </div>
+
+    <p class="subhead">🛒 Essentials Nearby</p>
+    <div class="card">
+      <ul class="bullets">
+        <li>Grocery: Stop & Shop and Market Basket both within 10 minutes on Rt. 132 in Hyannis</li>
+        <li>Pharmacy: CVS and Walgreens on Rt. 132, Hyannis (~10 min)</li>
+        <li>Gas: Multiple stations on Rt. 149 and Rt. 28</li>
+        <li>Hospital: Cape Cod Hospital, 27 Park St, Hyannis (~15 min) · (508) 771-1800</li>
+        <li>Emergency: 911 · Non-emergency Barnstable Police: (508) 775-0387</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GUESTBOOK -->
+  <div class="section" id="guestbook">
+    <div class="section-header">
+      <div class="section-icon">📖</div>
+      <h2 class="section-title">Guestbook</h2>
+    </div>
+    <p class="section-intro">We love knowing who's been here and what memories were made. Leave us a note!</p>
+
+    <div class="guestbook-entry">
+      <div class="gb-top">
+        <div class="gb-field">
+          <div class="gb-label">Your Name(s)</div>
+          <input class="gb-input" id="gb-name" type="text" placeholder="The Smith family...">
+        </div>
+        <div class="gb-field">
+          <div class="gb-label">Dates of Stay</div>
+          <input class="gb-input" id="gb-dates" type="text" placeholder="July 4–7, 2025">
+        </div>
+      </div>
+      <div class="gb-field">
+        <div class="gb-label">Your Message</div>
+        <textarea class="gb-textarea" id="gb-message" placeholder="We loved the pool and the sunset was incredible..."></textarea>
+      </div>
+      <button class="gb-save-btn" onclick="saveEntry()">💾 Save to Guestbook</button>
+    </div>
+
+    <div class="saved-entries" id="saved-entries"></div>
+  </div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <strong>The Webb Family Summer Home</strong><br>
+  23 Middle Pond Path · Marstons Mills, MA 02648<br>
+  Questions? Text <strong>Andy</strong> or <strong>Michelle</strong><br><br>
+  <span style="opacity:0.5; font-size:0.75rem;">Made with ❤️ for family</span>
+</div>
+
+<script>
+  function toggle(el) {
+    el.classList.toggle('done');
+  }
+
+  function saveEntry() {
+    const name = document.getElementById('gb-name').value.trim();
+    const dates = document.getElementById('gb-dates').value.trim();
+    const message = document.getElementById('gb-message').value.trim();
+    if (!name || !message) { alert('Please add your name and a message!'); return; }
+
+    const entries = JSON.parse(localStorage.getItem('wb-guestbook') || '[]');
+    entries.unshift({ name, dates, message, ts: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) });
+    localStorage.setItem('wb-guestbook', JSON.stringify(entries));
+
+    document.getElementById('gb-name').value = '';
+    document.getElementById('gb-dates').value = '';
+    document.getElementById('gb-message').value = '';
+    renderEntries();
+  }
+
+  function renderEntries() {
+    const entries = JSON.parse(localStorage.getItem('wb-guestbook') || '[]');
+    const container = document.getElementById('saved-entries');
+    if (!entries.length) { container.innerHTML = ''; return; }
+    container.innerHTML = '<p style="font-size:0.8rem;color:var(--muted);margin-bottom:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Past Guests</p>' +
+      entries.map(e => `
+        <div class="saved-entry">
+          <div class="saved-header">
+            <div class="saved-name">🌊 ${e.name}</div>
+            <div class="saved-date">${e.dates ? e.dates + ' · ' : ''}${e.ts}</div>
+          </div>
+          <div class="saved-message">"${e.message}"</div>
+        </div>
+      `).join('');
+  }
+
+  renderEntries();
+</script>
+</body>
+</html>
